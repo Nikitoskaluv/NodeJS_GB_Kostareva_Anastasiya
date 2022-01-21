@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "colors": "^1.4.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "nanoid": "^3.2.0"
   },
   "name": "nodejs_gb_kostareva_anastasiya",
   "version": "1.0.0",
@@ -9,6 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node Homework_1/index.js",
+    "dev2": "node Homework_2/index.js",
     "start": "npm run dev"
   },
   "repository": {
