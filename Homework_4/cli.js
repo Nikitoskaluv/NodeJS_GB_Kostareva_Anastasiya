@@ -5,61 +5,7 @@ const fs = require('fs');
 const path = require("path");
 const inquirer = require("inquirer");
 const yargs = require("yargs");
-// const readline = require("readline");
-// const fs = require("fs/promises");
 
-
-// console.log(process.argv)
-// const [filePath] = process.argv.slice(2);
-
-// const options = yargs
-//     .usage('Usage: -p <path to the file')
-//     .option('p', {
-//         alias: 'path',
-//         describe: 'Path to tha file',
-//         type: 'string',
-//         demandOption: 'true'
-//     }).argv;
-// console.log(options);
-// fs.readFile(options.p, 'utf-8', (err, data) => {
-//     if (err) {
-//         console.log(err)
-//     } else {
-//         console.log(data)
-//     }
-// })
-
-// const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-// })
-
-// rl.question("Введите путь до файла: ", (filePath) => {
-//     console.log(filePath);
-//     fs.readFile(filePath, 'utf-8', (err, data) => {
-//         if (err) {
-//             console.log(err)
-//         } else {
-//             console.log(data)
-//         }
-//     })
-//     rl.close();
-// })
-
-// const question = async (query) => new Promise(resolve => rl.question(query, resolve));
-
-// (async () => {
-//     const filePath = await question('Введите путь до файла: ');
-//     const encode = await question('Введите кодировку: ');
-//     const fullPath = path.resolve(__dirname, filePath);
-//     const data = await fs.readFile(fullPath, encode);
-//     console.log(fullPath);
-//     console.log(data);
-//     rl.close();
-// })();
-// isDir = (file) => {
-//     lstatSync(file).isDirectory();
-// }
 
 const executionDir = process.cwd();
 const options = yargs
@@ -115,6 +61,17 @@ async function readingDirectory(directory) {
         }
     }
 }
-readingDirectory(dirpath)
+// readingDirectory(dirpath);
+
+
+module.exports.readDir = (name) => {
+    return fs.readdirSync(name).map(fn => { return { 'name': fn, 'path': path.resolve(name, fn) } })
+}
+module.exports.isDir = (name) => {
+    return lstatSync(name).isDirectory();
+}
+module.exports.readFile = (name) => {
+    return fs.readFileSync(name);
+}
 
 
