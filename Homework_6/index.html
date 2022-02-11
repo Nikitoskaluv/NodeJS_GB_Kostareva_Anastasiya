@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket</title>
+    <script src="https://cdn.socket.io/3.1.1/socket.io.min.js"
+        integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <input id="input" type="text" autofocus>
+    <button id="button">Send</button>
+    <div id="messages"></div>
+    <div id="online"></div>
+    <script>
+        const socket = io('localhost:5555');
+        const messageBlock = document.querySelector('#messages');
+        const input = document.querySelector('#input');
+        const button = document.querySelector('#button');
+        const usersBlock = document.querySelector('#online');
+
+        button.addEventListener('click', () => {
+            const data = {
+                message: input.value,
+            }
+            socket.emit('client-msg', data);
+            input.value = '';
+        })
+
+        socket.on('connect', () => {
+            console.log('connected')
+        });
+      
+        socket.on('server-msg', (data) => {
+            console.log('data', data);
+            messageBlock.insertAdjacentHTML('afterbegin',
+                `<div>${data.name} : ${data.message}</div>`)
+        });
+        socket.on('new_connection', (data) => {
+            messageBlock.insertAdjacentHTML('afterbegin',
+                `<div>${data.note}</div>`)
+        });
+
+        socket.on('disconnection', (data) => {
+            messageBlock.insertAdjacentHTML('afterbegin',
+                `<div>${data.note}</div>`)
+        });
+
+
+    </script>
+
+</body>
+
+</html>
