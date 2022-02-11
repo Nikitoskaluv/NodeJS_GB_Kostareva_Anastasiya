@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "colors": "^1.4.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "inquirer": "^8.2.0",
+    "lodash": "^4.17.21",
+    "nanoid": "^3.2.0",
+    "socket.io": "^4.4.1",
+    "yargs": "^17.3.1",
+    "nodemon": "^2.0.13"
+  },
+  "name": "nodejs_gb_kostareva_anastasiya",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node Homework_1/index.js",
+    "dev2": "node Homework_2/index.js",
+    "dev3": "node Homework_3/index.js",
+    "dev4": "node Homework_4/cli.js",
+    "start": "npm run dev"
+  },
+  "bin": {
+    "reader": "cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikitoskaluv/NodeJS_GB_Kostareva_Anastasiya.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nikitoskaluv/NodeJS_GB_Kostareva_Anastasiya/issues"
+  },
+  "homepage": "https://github.com/Nikitoskaluv/NodeJS_GB_Kostareva_Anastasiya#readme",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^8.6.0"
+  }
+}
